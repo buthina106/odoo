@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+        <record id="department_action" model="ir.actions.act_window">
+            <field name="name">department</field>
+            <field name="res_model">hms.department</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    <record id="hms_department_tree_view" model="ir.ui.view">
+            <field name="name">HMS Department Tree View</field>
+            <field name="model">hms.department</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="capacity" />
+                    <field name="is_opened" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="hms_department_form_view" model="ir.ui.view">
+            <field name="name">HMS Department Form View</field>
+            <field name="model">hms.department</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="General Information">
+                            <field name="name" />
+                            <field name="capacity" />
+                            <field name="is_opened" />
+                        </group>
+                        <group string="Patients Information">
+                            <field name="patient_ids">
+                            <tree>
+                        <field name="first_name"/>
+                        <field name="last_name"/>
+                        <field name="age"/>
+                        <field name="image" widget="image" options="{'size': (150, 150)}" />
+                            </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <menuitem name="HMS" id="hms_menu"/>
+        <menuitem name="department" id="department_menu" parent="hms_menu" action="department_action"/>
+    </data>
+</odoo>
+
+
+
